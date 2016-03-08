@@ -36,7 +36,9 @@ app.use(compression());
 
 app.keys = ['wkpow3jocijoid3jioj3', 'cekopjpdjjo3jcjio3jc'];
 app.use(session({
-  store: new MongoStore()
+  store: new MongoStore({
+    url: (process.env.MONGOLAB_URI || process.env.MONGODB_URI || 'localhost')
+  })
 }));
 
 // app.use(logger());
