@@ -122,13 +122,15 @@ router.get('/', function* () {
 .get('/but/you/playing/:id', rendered);
 
 function* rendered() {
-  if (this.params.id === '1') {
-    return this.redirect('/');
+  var url = 'http://digitalprinciples.org';
+  var id = this.params.id;
+  if (id !== '1') {
+    var s = yield Style.findById(id).exec();
+    url = s.url;
   }
-  var s = yield Style.findById(this.params.id).exec();
   this.render('care-package', {
-    id: this.params.id,
-    url: s.url
+    id: id,
+    url: url
   });
 }
 
