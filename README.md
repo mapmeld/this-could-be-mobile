@@ -5,6 +5,8 @@
 It's a way to demo what someone else's site would look like
 if they added a mobile-responsive CSS file.
 
+<img src="http://i.imgur.com/j1AAylT.png"/>
+
 Recently I've found a lot of sites which would be good to have on my phone, but they
 didn't invest in mobile-responsive CSS. If they're not on GitHub, it's tricky to write to them
 and say "hey, add this file to your website." So I made a website that demos what it does,
