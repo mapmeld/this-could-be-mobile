@@ -1,0 +1,2 @@
+- Confirm fixes work on relative paths
+- Add mobile version of /and/awesome with a toolbar to preview each page

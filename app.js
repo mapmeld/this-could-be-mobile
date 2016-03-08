@@ -12,10 +12,10 @@ const csrf = require('koa-csrf');
 const kstatic = require('koa-static');
 
 const mongoose = require('mongoose');
-const thunkify = require('thunkify');
 const request = require('koa-request');
 
 const Style = require('./models/style');
+const fulllinks = require('./fulllinks');
 
 console.log('Connecting to MongoDB (required)');
 mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGODB_URI || 'localhost');
@@ -37,7 +37,7 @@ app.use(compression());
 app.keys = ['wkpow3jocijoid3jioj3', 'cekopjpdjjo3jcjio3jc'];
 app.use(session({
   store: new MongoStore({
-    url: (process.env.MONGOLAB_URI || process.env.MONGODB_URI || 'localhost')
+    connection: mongoose.connection
   })
 }));
 
@@ -60,7 +60,7 @@ router.get('/', function* () {
   // console.log(this.request.query);
   var response = yield request(this.request.query.url);
   var id = this.request.query.id;
-  this.body = response.body.replace('</head>', '<link rel="stylesheet" type="text/css" href="/styles/' + id + '"/></head>');
+  this.body = fulllinks(this.request.query.url, this.request.query.id, response.body);
 })
 .get('/styles/:id', function* () {
   var id = this.params.id;
