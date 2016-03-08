@@ -5,14 +5,38 @@ html
     title This Could Be Mobile...
     link(rel="stylesheet", type="text/css", href="/bootstrap.min.css")
   body
-    br
-    br
     .container
+      .row
+        .col-sm-12
+          h3
+            span Stop complaining and make a difference in a fellow developer's life by showing them&nbsp;
+            a(href="https://twitter.com/search?q=thiscouldbemobile", target="_blank") #thiscouldbemobile
+          .well
+            form(action="/want", method="POST")
+              input(type="hidden", name="_csrf", value=csrfToken)
+              .form-group
+                label(for="url") Starter URL
+                input.form-control(type="text", name="url", value="http://example.com")
+              .form-group
+                label(for="css") CSS
+                textarea.form-control(name="css", rows="9", height="350")= sampler
+              input.btn.btn-success(type="submit", value="Make It!")
+      .row
+        .col-sm-12
+          h3 Here's an example:
       .row
         .col-sm-6
           h4 Original
           iframe(src="//digitalprinciples.org", height="600", width="360")
         .col-sm-6
-          a.btn.btn-success.pull-right(href="/styles/1", style="margin-right: 80px;") See CSS
+          a.btn.btn-success.pull-right(href="/cssviewer/1", style="margin-right: 80px;") See CSS
           h4 Mobilized
           iframe(src="/page?url=http://digitalprinciples.org&id=1", height="600", width="360")
+
+      .row
+        .col-sm-2.col-sm-offset-4
+          br
+          br
+          a.btn.btn-danger(href="https://github.com/mapmeld/this-could-be-mobile", target="_blank") Open Source on GitHub
+          br
+          br

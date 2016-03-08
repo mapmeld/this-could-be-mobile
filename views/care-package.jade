@@ -1,0 +1,18 @@
+doctype
+html
+  head
+    meta(charset="utf-8")
+    title This Could Be Mobile...
+    link(rel="stylesheet", type="text/css", href="/bootstrap.min.css")
+  body
+    br
+    br
+    .container
+      .row
+        .col-sm-6
+          h4 Original
+          iframe(src="#{url}", height="600", width="360")
+        .col-sm-6
+          a.btn.btn-success.pull-right(href="/cssviewer/#{id}", style="margin-right: 80px;") See CSS
+          h4 Mobilized
+          iframe(src="/page?url=#{url}&id=#{id}", height="600", width="360")
