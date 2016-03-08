@@ -2,8 +2,8 @@
 
 ## ... but you playing
 
-It's a way to demo what someone else's site will look like
-if they add a mobile-responsive CSS file.
+It's a way to demo what someone else's site would look like
+if they added a mobile-responsive CSS file.
 
 ## License
 

@@ -48,7 +48,12 @@ router.get('/', function* () {
 .get('/page', function* () {
   // console.log(this.request.query);
   var response = yield request(this.request.query.url);
-  this.body = response.body.replace('</head>', '<style type="text/css">body, div { color: red !important; }</style></head>');
+  var id = this.request.query.id;
+  this.body = response.body.replace('</head>', '<link rel="stylesheet" type="text/css" href="http://this-could-be-mobile.herokuapp.com/styles/' + id + '"/></head>');
+})
+.get('/styles/:id', function* () {
+  var id = this.request.params.id;
+  this.body = 'html, body, div, li { color: #f00 !important; }';
 });
 
 app.use(router.routes())
