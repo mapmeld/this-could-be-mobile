@@ -49,11 +49,43 @@ router.get('/', function* () {
   // console.log(this.request.query);
   var response = yield request(this.request.query.url);
   var id = this.request.query.id;
-  this.body = response.body.replace('</head>', '<link rel="stylesheet" type="text/css" href="http://this-could-be-mobile.herokuapp.com/styles/' + id + '"/></head>');
+  this.body = response.body.replace('</head>', '<link rel="stylesheet" type="text/css" href="/styles/' + id + '"/></head>');
 })
 .get('/styles/:id', function* () {
-  var id = this.request.params.id;
-  this.body = 'html, body, div, li { color: #f00 !important; }';
+  var id = this.params.id;
+  this.type =  "text/css";
+  this.body = '@media (max-width: 767px) { \
+  .header--full-wrap { \
+    height: auto !important; \
+  } \
+  header.wrapper { \
+    text-align: center; \
+  } \
+  header.wrapper > h1 { \
+    float: none; \
+    margin-left: auto; \
+    margin-right: auto; \
+  } \
+  .header--full-wrap .wrapper #search, .header--full-wrap .wrapper #search input.s { \
+    float: none !important; \
+  } \
+  .hp-theprinciples #data ol { \
+    float: none !important; \
+    width: 90%; \
+    margin-left: 5%; \
+  } \
+  .hp-theprinciples #data ol li { \
+    padding: 0.5em; \
+  } \
+  .home aside, .home .content, .wrapper aside, .wrapper .content { \
+    width: 90%; \
+    float: none; \
+  } \
+  .footer--full-wrap #join, .footer--full-wrap #footernav { \
+    float: none; \
+    width: 90%; \
+  } \
+}';
 });
 
 app.use(router.routes())

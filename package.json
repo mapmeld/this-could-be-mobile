@@ -1,6 +1,6 @@
 {
   "name": "this-could-be-mobile",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Preview mobile-responsive CSS on websites you don't control",
   "main": "app.js",
   "scripts": {
