@@ -122,7 +122,7 @@ router.get('/', function* () {
 .get('/but/you/playing/:id', rendered);
 
 function* rendered() {
-  var url = 'http://digitalprinciples.org';
+  var url = 'http://thiscouldbemobile.com/sample.htm';
   var id = this.params.id;
   if (id !== '1') {
     var s = yield Style.findById(id).exec();
