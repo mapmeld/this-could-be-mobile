@@ -1,0 +1,21 @@
+doctype
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title This Could Be Mobile...
+    link(rel="stylesheet", type="text/css", href="/mobile.css")
+  body
+    .banner
+      if fix
+        a(href="/mobile?id=#{id}&url=#{url}")
+          button &larr; Original
+        span Proposed Change
+      else
+        span Original
+        a(href="/mobilefix?id=#{id}&url=#{url}")
+          button Proposed Change &rarr;
+    if fix
+      iframe(src="/page?id=#{id}&url=#{url}")
+    else
+      iframe(src=url)

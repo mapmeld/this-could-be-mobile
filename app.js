@@ -119,7 +119,9 @@ router.get('/', function* () {
 })
 .get('/and/awesome/:id', rendered)
 .get('/but/you/playin/:id', rendered)
-.get('/but/you/playing/:id', rendered);
+.get('/but/you/playing/:id', rendered)
+.get('/mobile', mobile)
+.get('/mobilefix', mobilefix);
 
 function* rendered() {
   var url = 'http://thiscouldbemobile.com/sample.htm';
@@ -131,6 +133,26 @@ function* rendered() {
   this.render('care-package', {
     id: id,
     url: url
+  });
+}
+
+function* mobile() {
+  var url = this.request.query.url;
+  var id = this.request.query.id;
+  this.render('mobile', {
+    id: id,
+    url: url,
+    fix: false
+  });
+}
+
+function* mobilefix() {
+  var url = this.request.query.url;
+  var id = this.request.query.id;
+  this.render('mobile', {
+    id: id,
+    url: url,
+    fix: true
   });
 }
 
