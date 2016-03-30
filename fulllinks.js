@@ -23,7 +23,7 @@ function fulllinks(fullurl, id, body) {
       if(relativePath(htmlurl)) {
         var remainingpath = fullurl.pathname.split('/');
         remainingpath.pop();
-        return '//' + fullurl.hostname + remainingpath.join('/') + htmlurl;
+        return '//' + fullurl.hostname + remainingpath.join('/') + '/' + htmlurl;
       } else {
         return '//' + fullurl.hostname + htmlurl;
       }
