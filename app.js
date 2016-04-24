@@ -29,14 +29,14 @@ app.use(bodyParser());
 app.use(compression());
 //app.use(cookieParser());
 
-// app.use(logger());
-csrf(app);
-app.use(csrf.middleware);
-
-app.keys = ['jdoijeijowj28hd9h', 'd89cj92nub9s98sanionwo'];
+app.keys = ['jdoijeijowj28hd9h', 'd89cj92nub9s98sanionwo', 'djoijewj28j2oijis90dj0'];
 app.use(session({
   store: new MongooseStore()
 }));
+
+// app.use(logger());
+csrf(app);
+app.use(csrf.middleware);
 
 // routes
 router.get('/', function* () {

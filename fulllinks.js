@@ -53,7 +53,25 @@ function fulllinks(fullurl, id, body) {
     }
   });
 
-  return $.html().replace('</head>', '<link rel="stylesheet" type="text/css" href="/styles/' + id + '"/></head>')
+  // must have <head> tag
+  if (!$('head').length) {
+    $('html').prepend('<head>');
+  }
+
+  // should have meta viewport
+  if (!$('head meta[name="viewport"]').length) {
+    $('head').prepend('<meta name="viewport" content="width=device-width, initial-scale=1"/>');
+  }
+
+  // should have meta charset
+  if (!$('head meta[charset]').length && !$('head meta[name="charset"]').length && !$('head meta[http-equiv="Content-Type"]').length) {
+    $('head').prepend('<meta charset="UTF-8"/>');
+  }
+
+  // add custom stylesheet at end
+  $('head').append('<link rel="stylesheet" type="text/css" href="/styles/' + id + '"/>');
+
+  return $.html();
 }
 
 module.exports = fulllinks;
