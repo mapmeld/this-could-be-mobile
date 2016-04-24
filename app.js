@@ -3,25 +3,20 @@ const koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const convert = require('koa-convert');
 const session = require('koa-generic-session');
-const MongoStore = require('koa-generic-session-mongo');
+const MongooseStore = require('koa-session-mongoose');
 const Jade = require('koa-jade');
 const logger = require('koa-logger');
 const router = require('koa-router')();
 const compression = require('koa-compress');
 const csrf = require('koa-csrf');
 const kstatic = require('koa-static');
-
-const mongoose = require('mongoose');
 const request = require('koa-request');
-
+const mongoose = require('mongoose');
 const Style = require('./models/style');
 const fulllinks = require('./fulllinks');
 
 console.log('Connecting to MongoDB (required)');
 mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGODB_URI || 'localhost');
-mongoose.connection.on("error", function(err) {
-  console.log(err);
-});
 
 var app = koa();
 const jade = new Jade({
@@ -34,16 +29,14 @@ app.use(bodyParser());
 app.use(compression());
 //app.use(cookieParser());
 
-app.keys = ['wkpow3jocijoid3jioj3', 'cekopjpdjjo3jcjio3jc'];
-app.use(session({
-  store: new MongoStore({
-    url: process.env.MONGOLAB_URI || process.env.MONGODB_URI || 'localhost'
-  })
-}));
-
 // app.use(logger());
 csrf(app);
 app.use(csrf.middleware);
+
+app.keys = ['jdoijeijowj28hd9h', 'd89cj92nub9s98sanionwo'];
+app.use(session({
+  store: new MongooseStore()
+}));
 
 // routes
 router.get('/', function* () {
