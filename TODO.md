@@ -1,2 +1,5 @@
-- Confirm fixes work on relative paths
-- Add mobile version of /and/awesome with a toolbar to preview each page
+- * { max-width: 100%; } ?
+- when to remove floats - position absolute + float? float right?
+- clearfix-ing around former floats
+- minimizing into hamburger menus
+- removed a background image

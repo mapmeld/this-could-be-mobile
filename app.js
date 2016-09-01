@@ -99,8 +99,15 @@ router.get('/', function* () {
 })
 .get('/cssviewer/:id', function* () {
   this.render('css-viewer', {
-    id: this.params.id
+    id: this.params.id,
+    csrfToken: this.csrf
   });
+})
+.post('/cssviewer/:id/edit', function* () {
+  var s = yield Style.findById(this.params.id).exec();
+  s.src = this.request.body.css;
+  s = yield s.save();
+  this.body = { status: 'success' };
 })
 .post('/want', function*() {
   var s = new Style({
