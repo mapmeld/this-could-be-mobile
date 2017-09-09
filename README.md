@@ -1,7 +1,5 @@
 # This could be mobile...
 
-## ... but you playing
-
 <a href="http://thiscouldbemobile.com">ThisCouldBeMobile.com</a> is a way to demo what someone else's site would look like
 if they added a mobile-responsive CSS file.
 
