@@ -8,14 +8,14 @@ html
   body
     .banner
       if fix
-        a(href="/mobile?id=#{id}&url=#{url}")
+        a(href="/mobile?id=" + id + "&url=" + url)
           button &larr; Original
         span Proposed Change
       else
         span Original
-        a(href="/mobilefix?id=#{id}&url=#{url}")
+        a(href="/mobilefix?id=" + id + "&url=" + url)
           button Proposed Change &rarr;
     if fix
-      iframe(src="/page?id=#{id}&url=#{url}")
+      iframe(src="/page?id=" + id + "&url=" + url)
     else
       iframe(src=url)

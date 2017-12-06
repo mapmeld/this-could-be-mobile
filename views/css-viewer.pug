@@ -10,12 +10,12 @@ html
     input#csrf(type="hidden", value=csrfToken)
     h1#loading Loading...
     h3 CSS Viewer on #thiscouldbemobile
-    a.btn.btn-primary(href="/and/awesome/#{id}") Side-by-Side Comparison
+    a.btn.btn-primary(href="/and/awesome/" + id) Side-by-Side Comparison
     br
     h4 Make sure you have these inside the &lt;head&gt; tag:
     ul
       li &lt;meta charset="UTF-8"/&gt;
-      li &lt;meta name="viewport" content="width=device-width, initial-scale=1"/&gt;    
+      li &lt;meta name="viewport" content="width=device-width, initial-scale=1"/&gt;
     br
     br
     textarea#code

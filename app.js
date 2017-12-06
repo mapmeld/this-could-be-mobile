@@ -4,7 +4,6 @@ const bodyParser = require('koa-bodyparser');
 const convert = require('koa-convert');
 const session = require('koa-generic-session');
 const MongooseStore = require('koa-session-mongoose');
-const Jade = require('koa-jade');
 const logger = require('koa-logger');
 const router = require('koa-router')();
 const compression = require('koa-compress');
@@ -12,6 +11,7 @@ const csrf = require('koa-csrf');
 const kstatic = require('koa-static');
 const request = require('koa-request');
 const mongoose = require('mongoose');
+const Pug = require('koa-pug');
 const Style = require('./models/style');
 const fulllinks = require('./fulllinks');
 
@@ -19,10 +19,10 @@ console.log('Connecting to MongoDB (required)');
 mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGODB_URI || 'localhost');
 
 var app = koa();
-const jade = new Jade({
-  viewPath: './views'
+new Pug({
+  app: app,
+  viewPath: './views/'
 });
-app.use(jade.middleware);
 
 app.use(kstatic(__dirname + '/static'));
 app.use(bodyParser());
