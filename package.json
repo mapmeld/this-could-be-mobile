@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/mapmeld/this-could-be-mobile#readme",
   "dependencies": {
-    "cheerio": "^0.20.0",
+    "cheerio": "^1.0.0-rc.12",
     "koa": "^1.2.0",
     "koa-bodyparser": "^2.0.1",
     "koa-compress": "^1.0.9",
